@@ -33,6 +33,19 @@ describe('simple database', () => {
       .then((file) => expect(file).toEqual(null));
   });
 
+  it('should get all files', async () => {
+    const simpleDb = new SimpleDb(TEST_DIR);
 
+    const file1 = {
+      name: 'file1.txt'
+    };
+    const file2 = {
+      name: 'file1.txt',
+    };
+
+    return simpleDb.save(file1)
+      .then(() => simpleDb.save(file2))
+      .then((files) => expect(files).toEqual(expect.arrayContaining([file1, file2])));
+  });
 
 });
