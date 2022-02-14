@@ -45,6 +45,7 @@ describe('simple database', () => {
 
     return simpleDb.save(file1)
       .then(() => simpleDb.save(file2))
+      .then(() => simpleDb.getAll())
       .then((files) => expect(files).toEqual(expect.arrayContaining([file1, file2])));
   });
 
